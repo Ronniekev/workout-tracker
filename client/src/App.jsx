@@ -13,7 +13,7 @@ function App() {
     <div className="app">
       <header>
         <h1>Excercise Tracker</h1>
-        <p>Keep track of workouts and visualize your improvements!</p>
+        <p>Keep track of workouts and view your improvements!</p>
       </header>
         <Router>
           <Routes>
