@@ -35,7 +35,7 @@ export const EditExercisePage = ({exerciseToEdit}) => {
                 setReps={setReps} setWeight={setWeight} setUnit={setUnit}setDate={setDate}></EditExerciseTable>
 
             <button
-                onClick={editExercise}
+                onClick={handleEditExercise}
             >Update</button>
 
         </div>

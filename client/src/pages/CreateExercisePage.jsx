@@ -16,15 +16,15 @@ export const CreateExercisePage = () => {
     const navigate = useNavigate();
 
     const handleAddExercise = async () => {
-  const newExercise = { name, reps, weight, unit, date };
-  try {
+    const newExercise = { name, reps, weight, unit, date };
+    try {
     await createExercise(newExercise);
     alert('Successfully added exercise');
     navigate('/');
   } catch (error) {
     alert(error.message);
   }
-};
+  };
     return (
         <div>
             <h4><button onClick= {()=> navigate('/')}><FaHome/></button></h4>
@@ -34,7 +34,7 @@ export const CreateExercisePage = () => {
                 setReps={setReps} setWeight={setWeight} setUnit={setUnit} setDate={setDate}></EditExerciseTable>
 
             <button
-                onClick={addExercise}
+                onClick={handleAddExercise}
             >Add</button>
         </div>
     );

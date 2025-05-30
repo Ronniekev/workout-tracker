@@ -72,7 +72,7 @@ app.put('/exercises/:id', asyncHandler(async (req, res) =>{
  * Delete the exercise whose id is provided in the query parameters
  */
 app.delete('/exercises/:id', asyncHandler(async (req, res) =>{
-    const deleted = await exercisesModel.deleteById(req.params._id);
+    const deleted = await exercisesModel.deleteById(req.params.id);
     if (deleted > 0){
         return res.status(204).send()
     } 

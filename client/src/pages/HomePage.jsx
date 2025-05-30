@@ -1,5 +1,5 @@
 import { Link, useNavigate} from 'react-router-dom';
-import {ExerciseTable, EditExerciseTable} from '../components/ExerciseTable';
+import {ExerciseTable} from '../components/ExerciseTable';
 import { useEffect, useState} from 'react';
 import {GiWeightLiftingUp} from "react-icons/gi"
 import {FaHome} from 'react-icons/fa';
@@ -24,12 +24,12 @@ function HomePage({setExerciseToEdit}) {
         loadExercises();
     }, []);
 
-    const onDelete = async (_id) => {
+    const onDelete = async (id) => {
     try {
-      await deleteExercise(_id);
-      setExercises((exercises) => exercises.filter((e) => e._id !== _id));
+      await deleteExercise(id);
+      setExercises((exercises) => exercises.filter((e) => e.id !== id));
     } catch (error) {
-      alert(`Failed to delete exercise with _id = ${_id}: ${error.message}`);
+      alert(`Failed to delete exercise with id = ${id}: ${error.message}`);
     }
   };
     const onEdit = (exercise) =>{
