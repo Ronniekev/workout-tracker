@@ -3,7 +3,7 @@ import {useNavigate} from 'react-router-dom'
 import {EditExerciseTable} from '../components/ExerciseTable';
 import {GiWeightLiftingUp} from "react-icons/gi"
 import {FaHome} from 'react-icons/fa';
-import { editExercise } from '../api.js';
+import { editExercise } from '../api/api';
 
 export const EditExercisePage = ({exerciseToEdit}) => {
 

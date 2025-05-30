@@ -3,7 +3,7 @@ import {ExerciseTable, EditExerciseTable} from '../components/ExerciseTable';
 import { useEffect, useState} from 'react';
 import {GiWeightLiftingUp} from "react-icons/gi"
 import {FaHome} from 'react-icons/fa';
-import { getExercises, deleteExercise } from '../api';
+import { getExercises, deleteExercise } from '../api/api';
 
 
 function HomePage({setExerciseToEdit}) {
