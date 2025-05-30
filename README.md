@@ -4,4 +4,4 @@ This is a React-based exercise tracking app that connects to a REST API backed b
 
 To View Tracker Visit
 
-http://localhost:5173/
+https://workout-tracker-bpqo.onrender.com
