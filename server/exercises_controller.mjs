@@ -5,12 +5,13 @@ import express from 'express';
 import asyncHandler from 'express-async-handler';
 
 import cors from 'cors';
-app.use(cors()); 
+
 
 const PORT = process.env.PORT;
 
 const app = express();
 app.use(express.json());
+app.use(cors()); 
 
 app.listen(PORT, asyncHandler(async () => {
     await exercisesModel.connect(false)
