@@ -4,6 +4,9 @@ import * as exercisesModel from './exercises_model.mjs';
 import express from 'express';
 import asyncHandler from 'express-async-handler';
 
+import cors from 'cors';
+app.use(cors()); 
+
 const PORT = process.env.PORT;
 
 const app = express();
