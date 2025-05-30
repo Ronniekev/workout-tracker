@@ -3,6 +3,7 @@ import {useNavigate} from 'react-router-dom'
 import {EditExerciseTable} from '../components/ExerciseTable';
 import {GiWeightLiftingUp} from "react-icons/gi"
 import {FaHome} from 'react-icons/fa';
+import { createExercise } from '../api.js'
 
 
 export const CreateExercisePage = () => {
@@ -14,25 +15,16 @@ export const CreateExercisePage = () => {
     const [date, setDate] = useState('');
     const navigate = useNavigate();
 
-    const addExercise = async () => {
-        const newExercise =  {name, reps, weight, unit, date}
-        const response = await fetch(
-            '/exercises', {
-                method: 'POST', 
-                headers: {'Content-type': 'application/json'},
-                body: JSON.stringify(newExercise)
-            }
-        );
-
-        if (response.status === 201){
-            alert("Succesfully added exercise")
-        } else {
-            alert("Failed to add exercise, status code = " + response.status)
-        }
-        navigate('/')
-    
-    };
-
+    const handleAddExercise = async () => {
+  const newExercise = { name, reps, weight, unit, date };
+  try {
+    await createExercise(newExercise);
+    alert('Successfully added exercise');
+    navigate('/');
+  } catch (error) {
+    alert(error.message);
+  }
+};
     return (
         <div>
             <h4><button onClick= {()=> navigate('/')}><FaHome/></button></h4>

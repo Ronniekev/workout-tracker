@@ -3,6 +3,7 @@ import {useNavigate} from 'react-router-dom'
 import {EditExerciseTable} from '../components/ExerciseTable';
 import {GiWeightLiftingUp} from "react-icons/gi"
 import {FaHome} from 'react-icons/fa';
+import { editExercise } from '../api.js';
 
 export const EditExercisePage = ({exerciseToEdit}) => {
 
@@ -14,24 +15,15 @@ export const EditExercisePage = ({exerciseToEdit}) => {
     
     const navigate = useNavigate();
 
-    const editExercise = async () => {
-        const updatedExercise=  {name, reps, weight, unit, date}
-        const response = await fetch(
-            `/exercises/${exerciseToEdit._id}`, {
-                method: 'PUT', 
-                headers: {'Content-type': 'application/json'},
-                body: JSON.stringify(updatedExercise)
-            }
-        );
-
-        if (response.status === 200){
-            alert("Succesfully updated exercise")
-        } else {
-            alert("Failed to update exercise, status code = " + response.status)
-        }
-        navigate('/')
-    
-    };
+    const handleEditExercise = async () => {
+    try {
+      await editExercise(exerciseToEdit._id, { name, reps, weight, unit, date });
+      alert("Successfully updated exercise");
+      navigate('/');
+    } catch (error) {
+      alert(error.message);
+    }
+  };
 
     return (
         <div>
@@ -44,7 +36,7 @@ export const EditExercisePage = ({exerciseToEdit}) => {
 
             <button
                 onClick={editExercise}
-            >Add</button>
+            >Update</button>
 
         </div>
     );

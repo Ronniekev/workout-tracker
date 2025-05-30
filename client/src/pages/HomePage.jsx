@@ -3,6 +3,7 @@ import {ExerciseTable, EditExerciseTable} from '../components/ExerciseTable';
 import { useEffect, useState} from 'react';
 import {GiWeightLiftingUp} from "react-icons/gi"
 import {FaHome} from 'react-icons/fa';
+import { getExercises, deleteExercise } from '../api';
 
 
 function HomePage({setExerciseToEdit}) {
@@ -10,27 +11,27 @@ function HomePage({setExerciseToEdit}) {
     const navigate = useNavigate()
 
     const loadExercises = async () => {
-        const response = await fetch('/exercises')
-        const data = await response.json();
-        setExercises(data)
+    try {
+      const data = await getExercises();
+      setExercises(data);
+    } catch (error) {
+      alert('Error loading exercises: ' + error.message);
     }
+  };
+
 
     useEffect( () => {
         loadExercises();
     }, []);
 
-    const onDelete = async (_id) =>{
-        const response = await fetch(
-            `/exercises/${_id}`,
-            {method: 'DELETE'}
-        );
-        if(response.status === 204){
-            setExercises(exercises.filter((e) => e._id !== _id))
-        } else{
-            alert(`Failed to delete exercise with _id = ${_id}, status code = ${response.status}`)
-        }
+    const onDelete = async (_id) => {
+    try {
+      await deleteExercise(_id);
+      setExercises((exercises) => exercises.filter((e) => e._id !== _id));
+    } catch (error) {
+      alert(`Failed to delete exercise with _id = ${_id}: ${error.message}`);
     }
-
+  };
     const onEdit = (exercise) =>{
         setExerciseToEdit(exercise)
         navigate('/edit-exercise')
