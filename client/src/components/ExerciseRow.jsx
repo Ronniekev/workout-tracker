@@ -30,12 +30,14 @@ export function EditExerciseRow({name, reps, weight, unit, date, setName, setRep
             <td>
                 <input
                     type="number"
+                    min='1'
                     value={reps}
                     onChange={e => setReps(e.target.valueAsNumber)} />
             </td>
             <td>
                 <input
                     type="number"
+                    min='1'
                     value={weight}
                     onChange={e => setWeight(e.target.valueAsNumber)} />
             </td>
@@ -51,9 +53,16 @@ export function EditExerciseRow({name, reps, weight, unit, date, setName, setRep
             </td>
             <td>
                 <input
-                    type="text"
+                    type="date"
                     value={date}
-                    onChange={e => setDate(e.target.value)} />
+                    onChange={e => setDate(e.target.value)}
+                    required
+                />
+                <div>{date ? new Date(date).toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric',
+                }) : 'No date selected'}</div>
             </td>
             
         </tr>

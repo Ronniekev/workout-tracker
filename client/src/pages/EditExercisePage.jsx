@@ -28,7 +28,9 @@ export const EditExercisePage = ({exerciseToEdit}) => {
     return (
         <div>
             <h4><button onClick= {()=> navigate('/')}><FaHome/></button></h4>
-            <h4><button onClick= {()=> navigate('/create-exercise')}><GiWeightLiftingUp />New Exercise</button></h4>
+            <h4><button onClick= {()=> navigate('/create-exercise')}>
+              <GiWeightLiftingUp />New Exercise</button>
+            </h4>
             <h2>Edit Excercise</h2>
             
             <EditExerciseTable name={name} reps={reps} weight={weight} unit={unit} date={date} setName={setName}

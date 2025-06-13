@@ -72,7 +72,7 @@ const isValidNumParam = (numParam) => {
 
 const isValidDate = (date) => {
     // Test using a regular expression.
-    const format = /^\d\d-\d\d-\d\d$/;
+    const format = /^\d{4}-\d{2}-\d{2}$/;
     return format.test(date);    
 }
 
